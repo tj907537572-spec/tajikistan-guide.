@@ -1,144 +1,145 @@
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tajikistan Super App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Tajikistan Travel Pro</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap');
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background: #fff; margin: 0; overflow-x: hidden; }
-        
-        /* 1. ЭКРАН ЛОГИНА */
-        #loginScreen {
-            position: fixed; inset: 0; z-index: 10000;
-            background: white; display: flex; flex-direction: column;
-            align-items: center; justify-content: center; padding: 30px;
-        }
-
-        /* 2. ЭКРАН WELCOME (БОЛЬШОЕ ФОТО) */
-        #welcomeOverlay {
-            position: fixed; inset: 0; z-index: 9999;
-            background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.7)), 
-                        url('https://images.unsplash.com/photo-1511216113906-8f57bb83e776?auto=format&fit=crop&w=1200&q=80');
-            background-size: cover; background-position: center;
-            display: none; flex-direction: column; align-items: center; justify-content: center;
-            color: white; transition: 1s ease;
-        }
-
-        .page { display: none; padding-bottom: 100px; }
-        .page-active { display: block; animation: fadeIn 0.5s ease; }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        
-        .card { background: #f9fafb; border-radius: 1.5rem; padding: 1rem; border: 1px solid #f1f5f9; margin-bottom: 10px; }
-        .tag { font-size: 8px; font-weight: 800; padding: 3px 8px; border-radius: 6px; text-transform: uppercase; margin-bottom: 5px; display: inline-block; }
-        .nav-active { color: #2563eb !important; }
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background: #f8fafc; color: #1e293b; }
+        .page { display: none; animation: fadeIn 0.3s ease; padding-bottom: 120px; }
+        .page-active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .nav-active { color: #2563eb !important; transform: translateY(-2px); }
+        .lang-btn { padding: 6px 12px; border-radius: 12px; font-size: 11px; font-weight: 800; border: 1px solid #e2e8f0; transition: 0.2s; }
+        .lang-active { background: #2563eb; color: white; border-color: #2563eb; box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3); }
+        .card-gradient { background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); }
     </style>
 </head>
-<body class="bg-gray-50">
+<body>
 
-    <div id="loginScreen">
-        <div class="w-full max-w-sm text-center">
-            <h2 class="text-3xl font-black mb-10">Sign In</h2>
-            <input type="text" id="userName" placeholder="Имя / Name" class="w-full p-4 rounded-2xl bg-gray-100 mb-3 outline-none border focus:border-blue-500">
-            <input type="password" id="userPass" placeholder="Пароль / Password" class="w-full p-4 rounded-2xl bg-gray-100 mb-6 outline-none border focus:border-blue-500">
-            <button onclick="handleLogin()" class="w-full bg-black text-white py-5 rounded-2xl font-black uppercase text-xs tracking-widest">Войти</button>
-        </div>
-    </div>
-
-    <div id="welcomeOverlay" class="text-center">
-        <h1 class="text-5xl font-black italic">Welcome to</h1>
-        <h2 class="text-4xl font-light uppercase tracking-widest mt-2">Tajikistan</h2>
-    </div>
-
-    <div id="appContainer" class="hidden">
-        <div class="px-6 pt-6 flex gap-2 overflow-x-auto">
-            <button onclick="changeLang('tj')" class="bg-white px-4 py-2 rounded-xl text-[10px] font-bold shadow-sm">🇹🇯 TJ</button>
-            <button onclick="changeLang('ru')" class="bg-white px-4 py-2 rounded-xl text-[10px] font-bold shadow-sm">🇷🇺 RU</button>
-            <button onclick="changeLang('en')" class="bg-white px-4 py-2 rounded-xl text-[10px] font-bold shadow-sm">🇺🇸 EN</button>
+    <div id="mainApp" class="px-6 pt-6">
+        <div class="flex gap-2 overflow-x-auto no-scrollbar mb-8 pb-2" id="langBar">
+            <button onclick="setLang('ru')" class="lang-btn lang-active" id="btn-ru">РУС</button>
+            <button onclick="setLang('tj')" class="lang-btn" id="btn-tj">ТОҶ</button>
+            <button onclick="setLang('en')" class="lang-btn" id="btn-en">ENG</button>
+            <button onclick="setLang('uz')" class="lang-btn" id="btn-uz">O'ZB</button>
+            <button onclick="setLang('tr')" class="lang-btn" id="btn-tr">TÜRK</button>
         </div>
 
-        <main id="homePage" class="page page-active px-6 pt-6">
-            <h2 id="txt-title" class="text-4xl font-extrabold italic mb-4">Hello.</h2>
+        <main id="home" class="page page-active">
+            <h2 id="h-title" class="text-4xl font-black italic mb-6 tracking-tighter">Explore.</h2>
             
-            <div class="grid grid-cols-2 gap-3 mb-6">
-                <div class="bg-blue-600 text-white p-5 rounded-[2rem]">
-                    <p class="text-[8px] font-bold opacity-70 uppercase">Weather</p>
-                    <p class="text-2xl font-black">+12°C</p>
+            <div class="card-gradient p-8 rounded-[2.5rem] text-white mb-8 shadow-2xl relative overflow-hidden">
+                <div class="relative z-10">
+                    <div class="flex justify-between items-start mb-10">
+                        <div class="bg-white/10 px-3 py-1 rounded-lg backdrop-blur">
+                            <p class="text-[9px] font-black uppercase tracking-widest">Alif Korti Milli</p>
+                        </div>
+                        <i class="fas fa-wifi rotate-90 opacity-50"></i>
+                    </div>
+                    <p id="card-label" class="text-[10px] opacity-50 mb-2 font-bold uppercase tracking-tighter">Card Number</p>
+                    <p class="text-xl font-mono font-bold tracking-[3px] mb-8">4444 8888 1461 0428</p>
+                    <div class="flex justify-between items-end">
+                        <p class="text-sm font-bold opacity-90">TAJIKISTAN TRAVELER</p>
+                        <div class="flex gap-1">
+                            <div class="w-6 h-6 bg-red-500 rounded-full opacity-80"></div>
+                            <div class="w-6 h-6 bg-yellow-500 rounded-full -ml-3 opacity-80"></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="bg-white p-5 rounded-[2rem] border border-gray-100">
-                    <p class="text-[8px] font-bold text-gray-400 uppercase">USD Rate</p>
-                    <p class="text-2xl font-black text-blue-600">10.92</p>
-                </div>
+                <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-blue-600/20 rounded-full blur-3xl"></div>
             </div>
 
-            <div class="bg-black p-6 rounded-[2.5rem] text-white mb-4">
-                <p id="txt-admin" class="text-[9px] font-black opacity-40 mb-2 uppercase">Contact Admin</p>
-                <p class="text-lg font-bold italic mb-4">tj907537572@mail.com</p>
-                <a href="mailto:tj907537572@mail.com" class="block text-center bg-blue-600 py-4 rounded-2xl font-black text-[10px] uppercase">Send Email</a>
-            </div>
-
-            <button class="w-full bg-green-500 text-white p-6 rounded-[2.5rem] flex items-center justify-between">
-                <span class="font-black text-xs uppercase italic">Open Chat Bot AI</span>
-                <i class="fas fa-robot text-2xl"></i>
-            </button>
-        </main>
-
-        <main id="partnersPage" class="page px-6 pt-6">
-            <h2 class="text-3xl font-black italic mb-6">Partners.</h2>
-            <div class="space-y-3">
-                <div class="card"><span class="tag bg-green-100 text-green-700">Guide</span><h4 class="font-bold text-sm">Parviz Solikhov</h4><p class="text-[10px] text-gray-400">RU, EN, FR, TJ</p></div>
-                <div class="card"><span class="tag bg-blue-100 text-blue-700">Company</span><h4 class="font-bold text-sm">Sky Tour</h4><p class="text-[10px] text-gray-400">skytour.tj</p></div>
-                <div class="card"><span class="tag bg-blue-100 text-blue-700">Company</span><h4 class="font-bold text-sm">Javohir</h4><p class="text-[10px] text-gray-400">+992 93 920 1010</p></div>
+            <div class="bg-white p-6 rounded-[2rem] border border-gray-100 shadow-sm mb-6">
+                <div class="flex gap-4 items-start">
+                    <div class="w-10 h-10 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center shrink-0">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div>
+                        <h4 id="info-title" class="font-black text-sm mb-1">Security Note</h4>
+                        <p id="info-text" class="text-xs text-gray-500 leading-relaxed">В Alif ваша виртуальная карта может иметь другой номер для защиты основных средств. Это стандарт безопасности.</p>
+                    </div>
                 </div>
+            </div>
         </main>
 
-        <nav class="fixed bottom-6 left-6 right-6 h-20 bg-black/90 backdrop-blur-xl rounded-[2.5rem] flex justify-around items-center px-4 z-50">
-            <button onclick="switchPage('homePage', this)" class="nav-active flex flex-col items-center gap-1">
-                <i class="fas fa-home"></i><span class="text-[8px] font-bold">HOME</span>
+        <main id="booking" class="page">
+            <h2 id="b-title" class="text-3xl font-black italic mb-6">Booking & Food.</h2>
+            
+            <div class="space-y-4">
+                <div class="bg-white p-5 rounded-[2rem] border border-gray-100 flex items-center gap-4">
+                    <div class="w-14 h-14 bg-orange-100 text-orange-600 rounded-2xl flex items-center justify-center font-black text-xl italic">B</div>
+                    <div class="flex-1">
+                        <h4 class="font-black italic text-sm">Bukhara / Бухоро</h4>
+                        <p class="text-[10px] text-gray-400 font-bold uppercase">Dushanbe, TJ</p>
+                    </div>
+                    <button class="w-10 h-10 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center"><i class="fas fa-location-arrow"></i></button>
+                </div>
+                <div class="bg-white p-5 rounded-[2rem] border border-gray-100 flex items-center gap-4">
+                    <div class="w-14 h-14 bg-green-100 text-green-600 rounded-2xl flex items-center justify-center font-black text-xl italic">R</div>
+                    <div class="flex-1">
+                        <h4 class="font-black italic text-sm">Rohat Chaikhana</h4>
+                        <p class="text-[10px] text-gray-400 font-bold uppercase">Rudaki Ave</p>
+                    </div>
+                    <button class="w-10 h-10 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center"><i class="fas fa-location-arrow"></i></button>
+                </div>
+            </div>
+        </main>
+
+        <nav class="fixed bottom-0 inset-x-0 h-24 bg-white/80 backdrop-blur-xl border-t flex justify-around items-center px-10 z-[100]">
+            <button onclick="goto('home', this)" class="nav-active flex flex-col items-center gap-1 text-gray-400 transition">
+                <i class="fas fa-th-large text-xl"></i>
+                <span id="n-home" class="text-[8px] font-black uppercase">Home</span>
             </button>
-            <button onclick="switchPage('partnersPage', this)" class="text-gray-500 flex flex-col items-center gap-1">
-                <i class="fas fa-map-marked-alt"></i><span class="text-[8px] font-bold">GUIDES</span>
+            <button onclick="goto('booking', this)" class="flex flex-col items-center gap-1 text-gray-400 transition">
+                <i class="fas fa-compass text-xl"></i>
+                <span id="n-book" class="text-[8px] font-black uppercase">Guide</span>
             </button>
         </nav>
     </div>
 
     <script>
-        function handleLogin() {
-            const user = document.getElementById('userName').value;
-            const pass = document.getElementById('userPass').value;
-            if(user && pass) {
-                document.getElementById('loginScreen').style.display = 'none';
-                document.getElementById('welcomeOverlay').style.display = 'flex';
-                setTimeout(() => {
-                    document.getElementById('welcomeOverlay').style.opacity = '0';
-                    setTimeout(() => {
-                        document.getElementById('welcomeOverlay').style.display = 'none';
-                        document.getElementById('appContainer').classList.remove('hidden');
-                    }, 1000);
-                }, 2500);
-            } else { alert("Error!"); }
+        const translations = {
+            ru: {
+                title: "Исследуй.", card: "Номер вашей карты:", infoT: "Безопасность Alif", infoX: "Номер виртуальной карты отличается от пластика для защиты ваших онлайн-транзакций.", nh: "Главная", nb: "Гид"
+            },
+            tj: {
+                title: "Саёҳат.", card: "Рақами корти шумо:", infoT: "Амнияти Alif", infoX: "Рақами корти виртуалӣ аз пластикӣ барои ҳимояи пардохтҳои онлайн фарқ мекунад.", nh: "Асосӣ", nb: "Раҳнамо"
+            },
+            en: {
+                title: "Explore.", card: "Your Card Number:", infoT: "Alif Security", infoX: "The virtual card number is different from the plastic one to protect your online payments.", nh: "Home", nb: "Guide"
+            },
+            uz: {
+                title: "Sayohat.", card: "Karta raqamingiz:", infoT: "Alif Xavfsizligi", infoX: "Virtual karta raqami onlayn to'lovlarni himoya qilish uchun plastikdan farq qiladi.", nh: "Asosiy", nb: "Yo'l ko'rsatkich"
+            },
+            tr: {
+                title: "Keşfet.", card: "Kart Numaranız:", infoT: "Alif Güvenliği", infoX: "Sanal kart numarası, çevrimiçi ödemelerinizi korumak için plastikten farklıdır.", nh: "Ana Sayfa", nb: "Rehber"
+            }
+        };
+
+        function setLang(lang) {
+            document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('lang-active'));
+            document.getElementById('btn-' + lang).classList.add('lang-active');
+            
+            const t = translations[lang];
+            document.getElementById('h-title').innerText = t.title;
+            document.getElementById('card-label').innerText = t.card;
+            document.getElementById('info-title').innerText = t.infoT;
+            document.getElementById('info-text').innerText = t.infoX;
+            document.getElementById('n-home').innerText = t.nh;
+            document.getElementById('n-book').innerText = t.nb;
         }
 
-        function switchPage(id, btn) {
+        function goto(id, btn) {
             document.querySelectorAll('.page').forEach(p => p.classList.remove('page-active'));
             document.querySelectorAll('nav button').forEach(b => b.classList.remove('nav-active'));
             document.getElementById(id).classList.add('page-active');
             btn.classList.add('nav-active');
         }
-
-        const translations = {
-            ru: { title: "Привет.", admin: "КОНТАКТЫ" },
-            tj: { title: "Салом.", admin: "ТАМОС" },
-            en: { title: "Hello.", admin: "CONTACT ADMIN" }
-        };
-
-        function changeLang(lang) {
-            document.getElementById('txt-title').innerText = translations[lang].title;
-            document.getElementById('txt-admin').innerText = translations[lang].admin;
-        }
     </script>
 </body>
 </html>
-    
+                
