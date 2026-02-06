@@ -3,150 +3,172 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Tajikistan Travel Pro</title>
+    <title>Tajikistan Travel Premium</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap');
-        
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background: #ffffff; margin: 0; padding: 0; }
-        
-        /* ГЛАВНЫЙ СЕКРЕТ: Скрываем все страницы по умолчанию */
-        .page { 
-            display: none; 
-            min-height: 100vh; 
-            width: 100%;
-            position: absolute;
-            top: 0;
-            left: 0;
-            background: white;
-        }
-
-        /* Показываем только активную страницу */
-        .page-active { display: block !important; z-index: 10; }
-
-        .nav-item-active { color: #2563eb !important; }
-        .btn-tap:active { transform: scale(0.95); }
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background: #f8fafc; color: #1e293b; }
+        .page { display: none; min-height: 100vh; animation: fadeIn 0.4s ease; }
+        .page-active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .hero-overlay { background: linear-gradient(0deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 60%); }
+        .btn-tap:active { transform: scale(0.96); }
+        .scroll-hide::-webkit-scrollbar { display: none; }
     </style>
 </head>
 <body>
 
-    <div id="auth-page" class="page page-active flex flex-col items-center justify-center px-8">
-        <div class="w-20 h-20 bg-blue-600 rounded-[2rem] mb-6 flex items-center justify-center text-white text-3xl shadow-xl shadow-blue-200">
+    <div id="auth-page" class="page page-active flex flex-col items-center justify-center px-10 bg-white">
+        <div class="w-20 h-20 bg-blue-600 rounded-[2rem] mb-8 flex items-center justify-center text-white text-3xl shadow-2xl">
             <i class="fas fa-mountain"></i>
         </div>
-        <h1 class="text-3xl font-black mb-8 italic uppercase tracking-tighter">Travel Pro</h1>
+        <h1 class="text-3xl font-black italic uppercase tracking-tighter mb-10">Travel Pro</h1>
         <div class="w-full space-y-4">
-            <input type="email" value="tj907537572@mail.com" class="w-full p-5 bg-gray-50 rounded-2xl border-none text-sm font-bold outline-none">
-            <input type="password" placeholder="••••••••" class="w-full p-5 bg-gray-50 rounded-2xl border-none outline-none">
-            <button onclick="nav('home-page')" class="w-full bg-blue-600 text-white p-5 rounded-[2rem] font-black shadow-lg btn-tap uppercase text-[10px] tracking-widest">Войти в аккаунт</button>
+            <input type="email" value="tj907537572@mail.com" class="w-full p-5 bg-gray-50 rounded-2xl border-none font-bold outline-none">
+            <input type="password" placeholder="Пароль" class="w-full p-5 bg-gray-50 rounded-2xl border-none outline-none">
+            <button onclick="nav('welcome-page')" class="w-full bg-blue-600 text-white py-5 rounded-3xl font-black shadow-xl btn-tap uppercase tracking-widest text-xs">Войти</button>
         </div>
     </div>
 
-    <div id="home-page" class="page p-6 pb-32">
-        <header class="flex justify-between items-center mb-8 mt-2">
-            <div>
-                <p class="text-[10px] font-black text-gray-400 uppercase">Баланс Alif</p>
-                <h2 class="text-2xl font-black italic">1,250.00 TJS</h2>
-            </div>
-            <div class="w-12 h-12 bg-slate-50 rounded-2xl flex items-center justify-center text-blue-600 border border-slate-100"><i class="fas fa-bell"></i></div>
-        </header>
-
-        <div onclick="nav('pay-page')" class="w-full bg-slate-900 rounded-[2.5rem] p-8 text-white shadow-2xl relative overflow-hidden btn-tap mb-8">
-            <div class="relative z-10">
-                <div class="flex justify-between mb-10">
-                    <span class="font-black italic text-lg text-blue-400">Alif</span>
-                    <span class="text-[10px] bg-white/10 px-3 py-1 rounded-full">Корти Милли</span>
-                </div>
-                <p class="text-[9px] opacity-50 uppercase tracking-widest mb-1">Номер вашей карты</p>
-                <p class="text-lg font-mono tracking-widest mb-6">4444 8888 1461 0428</p>
-            </div>
-            <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-blue-600/20 rounded-full blur-3xl"></div>
+    <div id="welcome-page" class="page relative h-screen">
+        <img src="https://images.unsplash.com/photo-1528127269322-539801943592?q=80&w=2000&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover">
+        <div class="absolute inset-0 hero-overlay flex flex-col justify-end p-10 text-white">
+            <h2 class="text-5xl font-black italic leading-tight mb-4">Welcome to<br>Tajikistan</h2>
+            <p class="text-sm opacity-80 mb-10 leading-relaxed font-light">Откройте для себя величие Памирских гор и древнюю историю Шелкового пути.</p>
+            <button onclick="nav('home-page')" class="w-full bg-white text-black py-5 rounded-full font-black btn-tap uppercase tracking-widest text-xs">Начать путешествие</button>
         </div>
+    </div>
 
-        <div class="grid grid-cols-2 gap-4">
-            <div class="bg-blue-600 p-6 rounded-[2rem] text-white">
-                <p class="text-[10px] font-bold opacity-70 uppercase">Weather</p>
-                <h3 class="text-2xl font-black">+12°C</h3>
+    <div id="home-page" class="page pb-32">
+        <div class="p-6">
+            <h2 class="text-2xl font-black italic tracking-tighter mb-6">Города Таджикистана</h2>
+            
+            <div class="flex gap-4 overflow-x-auto scroll-hide pb-4">
+                <div class="relative min-w-[160px] h-56 rounded-[2rem] overflow-hidden shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1571401835393-8c5f35328320" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black/40 flex items-end p-4"><span class="text-white font-bold text-sm">Помир</span></div>
+                </div>
+                <div class="relative min-w-[160px] h-56 rounded-[2rem] overflow-hidden shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1505245208761-ba873552a0c0" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black/40 flex items-end p-4"><span class="text-white font-bold text-sm">Искандаркул</span></div>
+                </div>
+                <div class="relative min-w-[160px] h-56 rounded-[2rem] overflow-hidden shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1590483734724-386185423bc3" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black/40 flex items-end p-4"><span class="text-white font-bold text-sm">Хучанд</span></div>
+                </div>
+                <div class="relative min-w-[160px] h-56 rounded-[2rem] overflow-hidden shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1527359443443-84a48abc7df0" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black/40 flex items-end p-4"><span class="text-white font-bold text-sm">Душанбе</span></div>
+                </div>
             </div>
-            <div class="bg-slate-50 p-6 rounded-[2rem] border border-slate-100">
-                <p class="text-[10px] font-bold text-gray-400 uppercase">USD Rate</p>
-                <h3 class="text-2xl font-black text-blue-600">10.92</h3>
+
+            <div onclick="nav('premium-page')" class="mt-8 bg-slate-900 p-8 rounded-[2.5rem] text-white relative overflow-hidden btn-tap shadow-2xl">
+                <div class="relative z-10">
+                    <div class="flex justify-between items-start mb-10">
+                        <span class="font-black italic text-xl text-blue-400">Alif</span>
+                        <span class="text-[9px] bg-white/20 px-3 py-1 rounded-full uppercase">Premium</span>
+                    </div>
+                    <p class="text-[9px] opacity-50 uppercase tracking-widest mb-1">Корти Милли</p>
+                    <p class="text-xl font-mono tracking-widest">4444 8888 1461 0428</p>
+                </div>
+                <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-blue-600/30 rounded-full blur-3xl"></div>
             </div>
+        </div>
+    </div>
+
+    <div id="chat-page" class="page p-6 pb-32">
+        <h2 class="text-2xl font-black italic mb-6">Travel AI & История</h2>
+        <div class="bg-blue-600 p-6 rounded-[2.5rem] text-white mb-6">
+            <p class="text-xs font-bold uppercase opacity-60 mb-2">Аудио-гид</p>
+            <h3 class="text-lg font-bold mb-4 italic">История Саразма: 5500 лет</h3>
+            <div class="flex items-center gap-4">
+                <button class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center"><i class="fas fa-play"></i></button>
+                <div class="h-1 flex-1 bg-white/20 rounded-full overflow-hidden"><div class="w-1/3 h-full bg-white"></div></div>
+            </div>
+        </div>
+        <div class="space-y-4">
+            <div class="bg-slate-50 p-5 rounded-2xl text-sm leading-relaxed border border-slate-100 italic">"Таджикистан — одна из древнейших стран мира. Город Саразм входит в список ЮНЕСКО..."</div>
         </div>
     </div>
 
     <div id="guides-page" class="page p-6 pb-32">
-        <h2 class="text-3xl font-black italic mb-6 mt-4">Booking & Food.</h2>
-        <div class="space-y-4">
-            <div class="flex items-center justify-between p-6 bg-slate-50 rounded-[2rem] border border-slate-100">
-                <div class="flex items-center gap-4">
-                    <div class="w-12 h-12 bg-orange-100 text-orange-600 rounded-2xl flex items-center justify-center font-black">B</div>
-                    <div><h4 class="font-bold text-sm">Bukhara / Бухоро</h4><p class="text-[10px] text-gray-400">DUSHANBE, TJ</p></div>
+        <h2 class="text-2xl font-black italic mb-6">Гиды и Бронирование</h2>
+        
+        <div class="space-y-6">
+            <div>
+                <h3 class="text-[10px] font-black uppercase text-blue-600 mb-3 tracking-widest">Тур Компании</h3>
+                <div class="flex gap-4 overflow-x-auto scroll-hide">
+                    <div class="min-w-[280px] bg-white p-5 rounded-[2rem] border border-slate-100 shadow-sm">
+                        <h4 class="font-black text-sm mb-1 uppercase">Pamir and Mountain</h4>
+                        <p class="text-[10px] text-gray-400 mb-3">Пенджикент • +992 93 599 3737</p>
+                        <a href="mailto:pamir-travel@list.ru" class="text-blue-600 text-[10px] font-bold underline">pamir-travel@list.ru</a>
+                    </div>
+                    <div class="min-w-[280px] bg-white p-5 rounded-[2rem] border border-slate-100 shadow-sm">
+                        <h4 class="font-black text-sm mb-1 uppercase">Sky Tour</h4>
+                        <p class="text-[10px] text-gray-400 mb-3">Душанбе • +992 90 858 0101</p>
+                        <a href="https://skytour.tj" class="text-blue-600 text-[10px] font-bold underline">skytour.tj</a>
+                    </div>
                 </div>
-                <div class="w-10 h-10 bg-white rounded-xl shadow-sm flex items-center justify-center text-blue-600"><i class="fas fa-location-arrow"></i></div>
             </div>
-            <div class="flex items-center justify-between p-6 bg-slate-50 rounded-[2rem] border border-slate-100">
-                <div class="flex items-center gap-4">
-                    <div class="w-12 h-12 bg-green-100 text-green-600 rounded-2xl flex items-center justify-center font-black">R</div>
-                    <div><h4 class="font-bold text-sm">Rohat Chaikhana</h4><p class="text-[10px] text-gray-400">RUDAKI AVE</p></div>
+
+            <div>
+                <h3 class="text-[10px] font-black uppercase text-blue-600 mb-3 tracking-widest">Частные Гиды</h3>
+                <div class="bg-white rounded-[2rem] border border-slate-100 divide-y divide-slate-50">
+                    <div class="p-5 flex justify-between items-center">
+                        <div><p class="font-black text-sm">Парвиз Солихов</p><p class="text-[9px] text-gray-400 italic">RU, EN, FR, TJ</p></div>
+                        <i class="fas fa-comment-dots text-blue-600"></i>
+                    </div>
+                    <div class="p-5 flex justify-between items-center">
+                        <div><p class="font-black text-sm">Назар Патандев</p><p class="text-[9px] text-gray-400 italic">RU, EN, TR, PER</p></div>
+                        <i class="fas fa-comment-dots text-blue-600"></i>
+                    </div>
                 </div>
-                <div class="w-10 h-10 bg-white rounded-xl shadow-sm flex items-center justify-center text-blue-600"><i class="fas fa-location-arrow"></i></div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-3">
+                <button class="bg-slate-900 text-white p-4 rounded-2xl flex items-center justify-center gap-2 text-[10px] font-bold"><i class="fas fa-bed"></i> Booking.com</button>
+                <button class="bg-blue-50 text-blue-600 p-4 rounded-2xl flex items-center justify-center gap-2 text-[10px] font-bold"><i class="fas fa-utensils"></i> Рестораны</button>
             </div>
         </div>
     </div>
 
-    <div id="pay-page" class="page p-6">
+    <div id="premium-page" class="page p-6">
         <button onclick="nav('home-page')" class="w-12 h-12 bg-slate-100 rounded-2xl flex items-center justify-center mb-6"><i class="fas fa-arrow-left"></i></button>
-        <div class="bg-slate-50 rounded-[3rem] p-8 text-center border border-slate-100">
-            <div class="w-16 h-16 bg-yellow-400 rounded-2xl flex items-center justify-center text-white text-2xl mx-auto mb-4 shadow-lg shadow-yellow-100"><i class="fas fa-crown"></i></div>
-            <h3 class="text-3xl font-black italic">$9.99</h3>
-            <p class="text-blue-600 font-bold text-xs uppercase mb-8">Premium Доступ</p>
-            <div class="p-5 bg-white rounded-2xl border-2 border-dashed border-slate-200 flex justify-between items-center mb-6">
-                <span class="font-mono font-bold text-sm">4444 8888 1461 0428</span>
-                <i class="fas fa-copy text-blue-600" onclick="alert('Номер скопирован!')"></i>
+        <div class="bg-white rounded-[3rem] p-8 text-center border-2 border-slate-100 shadow-2xl">
+            <div class="w-16 h-16 bg-yellow-400 rounded-2xl flex items-center justify-center text-white text-3xl mx-auto mb-6"><i class="fas fa-crown"></i></div>
+            <h3 class="text-4xl font-black italic mb-2">$9.99</h3>
+            <p class="text-slate-400 text-xs mb-8">Полный доступ ко всем гидам и оффлайн картам</p>
+            
+            <div class="bg-slate-50 p-6 rounded-3xl border-2 border-dashed border-slate-200 mb-8">
+                <p class="text-[10px] font-black uppercase text-blue-600 mb-2">Оплата через Alif</p>
+                <p class="font-mono font-bold tracking-tighter text-lg">4444 8888 1461 0428</p>
+                <button onclick="alert('Номер скопирован!')" class="mt-4 text-[10px] font-black uppercase underline tracking-widest">Скопировать</button>
             </div>
-            <button onclick="alert('Загрузите чек оплаты')" class="w-full py-5 bg-black text-white rounded-[2rem] font-black text-[10px] uppercase tracking-widest">Загрузить Чек</button>
+            
+            <button onclick="alert('Выберите чек в галерее')" class="w-full py-5 bg-blue-600 text-white rounded-full font-black text-xs uppercase tracking-widest shadow-xl">Загрузить чек</button>
         </div>
     </div>
 
-    <nav class="fixed bottom-0 inset-x-0 h-24 bg-white/80 backdrop-blur-xl border-t border-slate-100 flex justify-around items-center px-8 z-[100]">
-        <button onclick="nav('home-page')" id="nav-home" class="flex flex-col items-center gap-1 text-blue-600 transition-all">
-            <i class="fas fa-house-chimney text-xl"></i>
-            <span class="text-[8px] font-black uppercase">Home</span>
+    <nav class="fixed bottom-0 inset-x-0 h-24 bg-white/80 backdrop-blur-2xl border-t border-slate-100 flex justify-around items-center px-8 z-[100]">
+        <button onclick="nav('home-page')" class="flex flex-col items-center gap-1 text-blue-600">
+            <i class="fas fa-home text-xl"></i>
+            <span class="text-[8px] font-black uppercase">Главная</span>
         </button>
-        <button onclick="nav('guides-page')" id="nav-guides" class="flex flex-col items-center gap-1 text-slate-300 transition-all">
-            <i class="fas fa-compass text-xl"></i>
-            <span class="text-[8px] font-black uppercase">Guides</span>
+        <button onclick="nav('guides-page')" class="flex flex-col items-center gap-1 text-slate-300">
+            <i class="fas fa-id-card text-xl"></i>
+            <span class="text-[8px] font-black uppercase">Контакты</span>
         </button>
-        <button class="flex flex-col items-center gap-1 text-slate-300">
-            <i class="fas fa-gear text-xl"></i>
-            <span class="text-[8px] font-black uppercase">Settings</span>
+        <button onclick="nav('chat-page')" class="flex flex-col items-center gap-1 text-slate-300">
+            <i class="fas fa-microphone text-xl"></i>
+            <span class="text-[8px] font-black uppercase">Гид AI</span>
         </button>
     </nav>
 
     <script>
-        function nav(pageId) {
-            // 1. Скрываем все страницы
-            const pages = document.querySelectorAll('.page');
-            pages.forEach(p => p.classList.remove('page-active'));
-
-            // 2. Показываем нужную
-            document.getElementById(pageId).classList.add('page-active');
-
-            // 3. Обновляем цвета иконок в меню
-            const navHome = document.getElementById('nav-home');
-            const navGuides = document.getElementById('nav-guides');
-
-            if (pageId === 'home-page') {
-                navHome.classList.add('text-blue-600'); navHome.classList.remove('text-slate-300');
-                navGuides.classList.add('text-slate-300'); navGuides.classList.remove('text-blue-600');
-            } else if (pageId === 'guides-page') {
-                navGuides.classList.add('text-blue-600'); navGuides.classList.remove('text-slate-300');
-                navHome.classList.add('text-slate-300'); navHome.classList.remove('text-blue-600');
-            }
-
-            // Прокрутка наверх
+        function nav(id) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('page-active'));
+            document.getElementById(id).classList.add('page-active');
             window.scrollTo(0,0);
         }
     </script>
