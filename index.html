@@ -2,121 +2,173 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Tajikistan Guide</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tajikistan Premium Travel</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap');
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background: #fff; margin: 0; padding: 0; }
-        .page { display: none; min-height: 100vh; width: 100%; }
-        .page-active { display: flex !important; flex-direction: column; }
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;900&display=swap');
+        body { font-family: 'Montserrat', sans-serif; background: #f8fafc; color: #1e293b; }
+        .page { display: none; animation: slideUp 0.4s ease-out; }
+        .page-active { display: block; }
+        @keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        .nav-active { color: #0ea5e9 !important; border-top: 2px solid #0ea5e9; }
         .no-scrollbar::-webkit-scrollbar { display: none; }
-        .bottom-nav { display: none; } /* Скрыто на экране входа */
+        .premium-card { background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); }
     </style>
 </head>
-<body>
+<body class="pb-24">
 
-    <div id="auth-page" class="page page-active items-center justify-center px-8">
-        <div class="text-center mb-12">
-            <h1 class="text-5xl font-black italic text-[#1d5eff] tracking-tighter">Welcome.</h1>
-            <p class="text-gray-400 font-bold text-[10px] uppercase mt-2 tracking-[0.2em]">Tajikistan Premium Guide</p>
-        </div>
-        <div class="w-full max-w-sm space-y-4">
-            <input type="email" id="uEmail" value="tj907537572@mail.com" class="w-full p-6 bg-gray-100 rounded-[2rem] outline-none font-bold text-center border-2 border-transparent focus:border-blue-500 transition-all">
-            <button onclick="login()" class="w-full bg-[#1d5eff] text-white py-6 rounded-[2rem] font-black shadow-xl active:scale-95 transition-all uppercase italic">Войти</button>
-        </div>
-    </div>
+    <div onclick="openAdmin()" class="fixed top-0 right-0 w-12 h-12 z-[9999] opacity-0 cursor-pointer"></div>
 
-    <div id="welcome-page" class="page relative h-screen">
-        <img src="https://images.unsplash.com/photo-1528127269322-539801943592?q=80&w=1000" class="absolute inset-0 w-full h-full object-cover">
-        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
-        <div class="absolute bottom-16 left-0 w-full p-10 text-center">
-            <h2 class="text-white text-5xl font-black italic leading-tight mb-8">Welcome to<br>Tajikistan</h2>
-            <button onclick="nav('home-page')" class="bg-white text-black px-12 py-5 rounded-full font-black uppercase italic shadow-2xl active:scale-95 transition-all">Исследовать</button>
-        </div>
-    </div>
+    <main id="homePage" class="page page-active p-6">
+        <header class="mb-8">
+            <h1 class="text-4xl font-black italic tracking-tighter uppercase leading-tight">Elite<br><span class="text-sky-500">Tajikistan</span></h1>
+            <p class="text-gray-400 text-[10px] mt-2 uppercase tracking-widest font-bold">Official Partner: tj907537572@mail.com</p>
+        </header>
 
-    <div id="home-page" class="page p-6 pb-32">
-        <h2 class="text-4xl font-black italic tracking-tighter mb-8">Explore.</h2>
+        <div class="flex gap-4 overflow-x-auto no-scrollbar mb-8">
+            <div class="min-w-[280px] h-80 rounded-[3rem] bg-cover p-6 flex flex-col justify-end shadow-2xl" style="background-image: url('https://images.unsplash.com/photo-1544919982-b61976f0ba43?w=600');">
+                <div class="bg-black/30 backdrop-blur-md p-4 rounded-3xl text-white border border-white/20">
+                    <h4 class="font-bold">Искандеркуль</h4>
+                    <p class="text-[10px] opacity-80">Фанские горы, Таджикистан</p>
+                </div>
+            </div>
+            <div class="min-w-[280px] h-80 rounded-[3rem] bg-cover p-6 flex flex-col justify-end shadow-2xl" style="background-image: url('https://images.unsplash.com/photo-1582269389510-911475960098?w=600');">
+                <div class="bg-black/30 backdrop-blur-md p-4 rounded-3xl text-white border border-white/20">
+                    <h4 class="font-bold">Памир</h4>
+                    <p class="text-[10px] opacity-80">Крыша Мира (ГБАО)</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4">
+            <div class="bg-white p-6 rounded-[2.5rem] border shadow-sm flex flex-col items-center">
+                <i class="fas fa-landmark text-sky-500 text-2xl mb-2"></i>
+                <span class="text-[10px] font-black uppercase">Музеи</span>
+            </div>
+            <div class="bg-white p-6 rounded-[2.5rem] border shadow-sm flex flex-col items-center">
+                <i class="fas fa-atm text-green-500 text-2xl mb-2"></i>
+                <span class="text-[10px] font-black uppercase">Банкоматы</span>
+            </div>
+        </div>
+    </main>
+
+    <main id="bookingPage" class="page p-6">
+        <h2 class="text-2xl font-black mb-6 italic uppercase">Сервис & Отели</h2>
         
-        <div class="flex gap-4 overflow-x-auto no-scrollbar pb-6 -mx-6 px-6">
-            <div class="min-w-[300px] h-[450px] relative rounded-[3rem] overflow-hidden shadow-2xl">
-                <img src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=600" class="w-full h-full object-cover">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/90 p-8 flex flex-col justify-end">
-                    <span class="text-white text-3xl font-black italic uppercase">Худжанд</span>
-                </div>
+        <a href="https://www.booking.com/country/tj.ru.html" target="_blank" class="block bg-blue-700 p-6 rounded-[2.5rem] text-white mb-6 shadow-xl">
+            <div class="flex justify-between items-center mb-1">
+                <span class="text-xl font-black italic">Booking.com</span>
+                <i class="fas fa-external-link-alt text-sm"></i>
             </div>
-            <div class="min-w-[300px] h-[450px] relative rounded-[3rem] overflow-hidden shadow-2xl">
-                <img src="https://images.unsplash.com/photo-1505245208761-ba873552a0c0?w=600" class="w-full h-full object-cover">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/90 p-8 flex flex-col justify-end">
-                    <span class="text-white text-3xl font-black italic uppercase">Искандаркул</span>
-                </div>
-            </div>
-            <div class="min-w-[300px] h-[450px] relative rounded-[3rem] overflow-hidden shadow-2xl">
-                <img src="https://images.unsplash.com/photo-1628157588553-5eeea00af15c?w=600" class="w-full h-full object-cover">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/90 p-8 flex flex-col justify-end">
-                    <span class="text-white text-3xl font-black italic uppercase">Душанбе</span>
-                </div>
-            </div>
-        </div>
+            <p class="text-[10px] opacity-70">Найти жилье в Душанбе, Хороге и Худжанде</p>
+        </a>
 
-        <div class="mt-8 bg-[#0f172a] p-10 rounded-[3rem] text-white shadow-2xl relative overflow-hidden">
-            <div class="flex justify-between mb-10">
-                <h4 class="text-2xl font-black italic">Premium Card</h4>
-                <i class="fab fa-cc-visa text-3xl opacity-50"></i>
-            </div>
-            <p class="text-2xl font-bold tracking-[0.2em] mb-4">4444 8888 1461 0428</p>
-            <p class="text-[10px] font-black text-blue-400 uppercase tracking-widest">Цена: $9.99 / Офлайн Карты</p>
-        </div>
-    </div>
-
-    <div id="guides-page" class="page p-6 pb-32">
-        <h2 class="text-4xl font-black italic tracking-tighter mb-8">Contacts.</h2>
         <div class="space-y-4">
-            <div class="p-7 bg-gray-50 rounded-[2.5rem] flex items-center justify-between border border-gray-100">
-                <div>
-                    <h4 class="font-black italic text-lg">Pamir Silk Travel</h4>
-                    <p class="text-[10px] text-gray-400 font-bold uppercase mt-1">+992 93 505 2361</p>
+            <h3 class="text-[10px] font-black text-gray-400 uppercase tracking-widest px-2">Рестораны и Кафе</h3>
+            <div class="bg-white p-5 rounded-[2.5rem] border flex items-center gap-4">
+                <div class="w-12 h-12 bg-amber-50 text-amber-500 rounded-2xl flex items-center justify-center"><i class="fas fa-utensils"></i></div>
+                <div class="flex-1">
+                    <p class="font-bold text-sm uppercase">Чайхана Рохат</p>
+                    <p class="text-[10px] text-gray-400">Легендарная архитектура</p>
                 </div>
-                <a href="tel:+992935052361" class="w-14 h-14 bg-blue-600 text-white rounded-full flex items-center justify-center shadow-lg"><i class="fas fa-phone-alt"></i></a>
             </div>
-            <div class="p-8 bg-orange-50 rounded-[3rem] mt-6">
-                <h4 class="font-black italic text-orange-600 text-xs mb-4 uppercase tracking-widest">Топ Рестораны</h4>
-                <p class="font-bold mb-2">Rohat Chaikhana</p>
-                <p class="font-bold mb-2">Bukhara Dushanbe</p>
-                <p class="font-bold">Toqi Restaurant</p>
+            <div class="bg-white p-5 rounded-[2.5rem] border flex items-center gap-4">
+                <div class="w-12 h-12 bg-rose-50 text-rose-500 rounded-2xl flex items-center justify-center"><i class="fas fa-wine-glass-alt"></i></div>
+                <div class="flex-1">
+                    <p class="font-bold text-sm uppercase">Bukhara</p>
+                    <p class="text-[10px] text-gray-400">Элитный ресторан</p>
+                </div>
             </div>
         </div>
+    </main>
+
+    <main id="guidesPage" class="page p-6">
+        <h2 class="text-2xl font-black mb-6 italic uppercase">VIP Контакты</h2>
+        
+        <div class="space-y-4">
+            <div class="bg-white p-6 rounded-[2.5rem] border-2 border-sky-100">
+                <h4 class="font-black text-lg">Pamir and Mountain Travel</h4>
+                <p class="text-[10px] text-sky-500 font-bold mb-4 uppercase italic">Локация: Пенджикент</p>
+                <button onclick="openPay()" class="w-full bg-black text-white p-4 rounded-2xl text-[10px] font-black uppercase tracking-widest">Показать WhatsApp & Email</button>
+            </div>
+
+            <div class="bg-white p-6 rounded-[2.5rem] border shadow-sm">
+                <h4 class="font-black text-lg">Парвиз Солихов</h4>
+                <p class="text-[10px] text-gray-400 mb-4 uppercase">Гид (RU, EN, FR, TJ)</p>
+                <button onclick="openPay()" class="w-full border-2 border-black p-4 rounded-2xl text-[10px] font-black uppercase">Разблокировать контакт</button>
+            </div>
+        </div>
+    </main>
+
+    <div id="payModal" class="hidden fixed inset-0 z-[10000] bg-white p-8 flex flex-col items-center justify-center text-center">
+        <button onclick="closePay()" class="absolute top-10 right-10 text-gray-300"><i class="fas fa-times text-2xl"></i></button>
+        
+        <div class="premium-card w-full p-8 rounded-[3rem] text-white shadow-2xl mb-8">
+            <div class="flex justify-between items-start mb-10">
+                <i class="fas fa-crown text-amber-400 text-3xl"></i>
+                <span class="text-[10px] font-bold opacity-60 uppercase tracking-widest italic">Premium Pass</span>
+            </div>
+            <p class="text-[10px] text-sky-400 font-black uppercase mb-1">Перевод на Alif (TJS)</p>
+            <h3 class="text-xl font-mono font-bold tracking-tighter mb-8" id="cardNumber">4444 8888 1461 0428</h3>
+            <div class="flex justify-between items-end">
+                <div>
+                    <p class="text-[8px] opacity-50 uppercase mb-1">Стоимость</p>
+                    <p class="text-lg font-black italic">110 TJS / $9.99</p>
+                </div>
+                <button onclick="copyCard()" class="bg-white/10 backdrop-blur-md px-4 py-2 rounded-xl text-[10px] font-bold">Копировать</button>
+            </div>
+        </div>
+        
+        <h2 class="text-2xl font-black mb-4 tracking-tighter uppercase">Активировать доступ?</h2>
+        <p class="text-gray-400 text-xs mb-8 leading-relaxed px-4">После перевода нажмите кнопку ниже. Мы мгновенно пришлем вам пароль в WhatsApp.</p>
+        
+        <button onclick="confirmPay()" class="w-full bg-sky-500 text-white p-5 rounded-3xl font-black shadow-xl shadow-sky-100 uppercase tracking-widest text-sm">Я перевел деньги</button>
     </div>
 
-    <nav id="main-nav" class="bottom-nav fixed bottom-0 inset-x-0 h-24 bg-white/90 backdrop-blur-xl border-t border-gray-100 items-center justify-around z-[500] px-4">
-        <button onclick="nav('home-page')" class="flex flex-col items-center gap-1 text-blue-600"><i class="fas fa-home text-2xl"></i><span class="text-[8px] font-black uppercase">Home</span></button>
-        <button onclick="nav('guides-page')" class="flex flex-col items-center gap-1 text-gray-300"><i class="fas fa-address-book text-2xl"></i><span class="text-[8px] font-black uppercase">Guides</span></button>
-        <button onclick="location.reload()" class="flex flex-col items-center gap-1 text-gray-300"><i class="fas fa-power-off text-2xl"></i><span class="text-[8px] font-black uppercase">Exit</span></button>
+    <nav class="fixed bottom-0 inset-x-0 bg-white border-t h-20 flex justify-around items-center z-[8000] px-4">
+        <button onclick="showPage('homePage', this)" class="nav-active flex flex-col items-center p-4">
+            <i class="fas fa-home text-lg"></i>
+            <span class="text-[8px] font-bold mt-1 uppercase">Главная</span>
+        </button>
+        <button onclick="showPage('bookingPage', this)" class="text-gray-300 flex flex-col items-center p-4">
+            <i class="fas fa-search-location text-lg"></i>
+            <span class="text-[8px] font-bold mt-1 uppercase">Сервис</span>
+        </button>
+        <button onclick="showPage('guidesPage', this)" class="text-gray-300 flex flex-col items-center p-4">
+            <i class="fas fa-user-check text-lg"></i>
+            <span class="text-[8px] font-bold mt-1 uppercase">Гиды VIP</span>
+        </button>
     </nav>
 
     <script>
-        function login() {
-            // Убираем страницу логина и показываем Welcome
-            document.getElementById('auth-page').classList.remove('page-active');
-            document.getElementById('welcome-page').classList.add('page-active');
+        function showPage(id, btn) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('page-active'));
+            document.querySelectorAll('nav button').forEach(b => b.classList.remove('nav-active'));
+            document.getElementById(id).classList.add('page-active');
+            btn.classList.add('nav-active');
         }
 
-        function nav(id) {
-            // Скрываем все и показываем нужную
-            document.querySelectorAll('.page').forEach(p => p.classList.remove('page-active'));
-            document.getElementById(id).classList.add('page-active');
-            
-            // Если мы на главном экране или гидах — показываем меню
-            if(id === 'home-page' || id === 'guides-page') {
-                document.getElementById('main-nav').style.display = 'flex';
-            } else {
-                document.getElementById('main-nav').style.display = 'none';
+        function openPay() { document.getElementById('payModal').classList.remove('hidden'); }
+        function closePay() { document.getElementById('payModal').classList.add('hidden'); }
+
+        function copyCard() {
+            navigator.clipboard.writeText("4444888814610428");
+            alert("Номер карты Alif скопирован!");
+        }
+
+        function confirmPay() {
+            const text = encodeURIComponent("Здравствуйте! Я оплатил 110 TJS на карту Alif. Откройте мне доступ к контактам гидов. Мой email: tj907537572@mail.com");
+            window.open(`https://wa.me/992935993737?text=${text}`);
+        }
+
+        function openAdmin() {
+            const pass = prompt("ADMIN ACCESS:");
+            if(pass === "MASTER99") {
+                alert("Панель управления\nEmail: tj907537572@mail.com\nКарта: 4444...0428\nСтатус: Работает");
             }
-            window.scrollTo(0,0);
         }
     </script>
 </body>
 </html>
-      
