@@ -3,135 +3,125 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Tajikistan Premium Guide</title>
+    <title>Tajikistan Travel</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap');
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background: #f8fafc; color: #1e293b; }
-        .page { display: none; min-height: 100vh; width: 100%; }
-        .page-active { display: block !important; }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
+        body { font-family: 'Inter', sans-serif; background: #fff; }
+        .page { display: none; min-height: 100vh; }
+        .page-active { display: block; }
+        .city-card { min-width: 260px; height: 350px; border-radius: 2rem; position: relative; overflow: hidden; margin-right: 15px; }
         .no-scrollbar::-webkit-scrollbar { display: none; }
-        .city-card { min-width: 280px; height: 400px; border-radius: 2.5rem; overflow: hidden; position: relative; transition: transform 0.3s; }
-        .city-card:active { transform: scale(0.95); }
-        .glass-nav { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(20px); border-top: 1px solid rgba(0,0,0,0.05); }
     </style>
 </head>
 <body>
 
-    <div id="auth-page" class="page page-active flex flex-col items-center justify-center px-10">
-        <div class="w-full max-w-sm text-center">
-            <h1 class="text-6xl font-black italic text-blue-600 tracking-tighter mb-2">TAJIKISTAN</h1>
-            <p class="text-[10px] font-bold text-gray-400 uppercase tracking-[0.3em] mb-12">Official Travel App</p>
-            
-            <div class="space-y-4">
-                <div class="relative">
-                    <i class="fas fa-envelope absolute left-6 top-1/2 -translate-y-1/2 text-gray-400"></i>
-                    <input type="email" id="uEmail" value="tj907537572@mail.com" 
-                           class="w-full p-6 pl-14 bg-white shadow-sm rounded-3xl outline-none font-bold border-2 border-transparent focus:border-blue-500 transition-all">
-                </div>
-                <button onclick="login()" class="w-full bg-blue-600 text-white py-6 rounded-3xl font-black text-lg shadow-xl shadow-blue-200 active:scale-95 transition-all italic">ВОЙТИ</button>
-            </div>
+    <div id="auth-page" class="page page-active p-8 flex flex-col justify-center items-center">
+        <h1 class="text-4xl font-black italic text-blue-600 mb-8 uppercase tracking-tighter">Tajikistan</h1>
+        <div class="w-full space-y-4">
+            <input type="text" placeholder="Ваше имя" class="w-full p-5 bg-gray-100 rounded-3xl outline-none font-bold">
+            <input type="email" id="userEmail" value="tj907537572@mail.com" class="w-full p-5 bg-gray-100 rounded-3xl outline-none font-bold text-gray-500">
+            <input type="password" placeholder="Пароль" class="w-full p-5 bg-gray-100 rounded-3xl outline-none font-bold">
+            <button onclick="nav('home-page')" class="w-full bg-blue-600 text-white py-5 rounded-3xl font-black text-xl shadow-lg active:scale-95 transition-transform">
+                ВОЙТИ
+            </button>
         </div>
     </div>
 
-    <div id="welcome-page" class="page relative h-screen">
-        <img src="https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&q=80&w=1000" class="absolute inset-0 w-full h-full object-cover">
-        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
-        <div class="absolute bottom-20 left-0 w-full p-10 text-center">
-            <h2 class="text-white text-5xl font-black italic leading-tight mb-8">Welcome to<br>Tajikistan</h2>
-            <button onclick="nav('home-page')" class="bg-white text-blue-600 px-12 py-5 rounded-full font-black uppercase italic shadow-2xl">Начать путешествие</button>
-        </div>
-    </div>
-
-    <div id="home-page" class="page pb-32">
-        <header class="p-6 flex justify-between items-center bg-white">
-            <div>
-                <h3 class="text-2xl font-black italic tracking-tighter">Explore.</h3>
-                <p class="text-[9px] font-bold text-gray-400 uppercase">Partner: tj907537572@mail.com</p>
-            </div>
-            <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center text-blue-600">
-                <i class="fas fa-user-crown"></i>
-            </div>
+    <div id="home-page" class="page">
+        <header class="p-6">
+            <h2 class="text-4xl font-black italic italic mb-1">Explore.</h2>
+            <p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Partner: tj907537572@mail.com</p>
         </header>
 
-        <div class="px-6 space-y-8">
-            <div class="flex gap-4 overflow-x-auto no-scrollbar -mx-6 px-6 py-2">
-                <div class="city-card shadow-xl">
-                    <img src="https://kartinki.pics/uploads/posts/2021-03/1616102148_18-p-khudzhand-dostoprimechatelnosti-fotografii-21.jpg" class="w-full h-full object-cover">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent p-8 flex flex-col justify-end">
-                        <h4 class="text-white text-2xl font-black italic uppercase">Худжанд</h4>
-                        <p class="text-white/60 text-[10px] font-bold">Древняя крепость</p>
-                    </div>
-                </div>
-                <div class="city-card shadow-xl">
-                    <img src="https://moya-planeta.ru/upload/images/xl/70/06/7006834164be6564619d084e36696700.jpg" class="w-full h-full object-cover">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent p-8 flex flex-col justify-end">
-                        <h4 class="text-white text-2xl font-black italic uppercase">Помир</h4>
-                        <p class="text-white/60 text-[10px] font-bold">Крыша Мира (ГБАО)</p>
-                    </div>
-                </div>
-                <div class="city-card shadow-xl">
-                    <img src="https://CentralAsia.travel/storage/images/tours/908/photos/ozero_iskanderkul_v_tadzhikistane_2.jpg" class="w-full h-full object-cover">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent p-8 flex flex-col justify-end">
-                        <h4 class="text-white text-2xl font-black italic uppercase">Искандаркул</h4>
-                        <p class="text-white/60 text-[10px] font-bold">Сердце Фанских гор</p>
-                    </div>
+        <div class="flex overflow-x-auto no-scrollbar px-6 mb-8">
+            <div class="city-card shadow-xl">
+                <img src="https://life.ansor.info/wp-content/uploads/2018/01/sarazm_penjikent.jpg" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent p-6 flex flex-col justify-end">
+                    <h3 class="text-white text-2xl font-black uppercase italic">Саразм</h3>
                 </div>
             </div>
+            <div class="city-card shadow-xl">
+                <img src="https://asiamust.com/wp-content/uploads/2019/04/pamir-highway-tajikistan-1.jpg" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent p-6 flex flex-col justify-end">
+                    <h3 class="text-white text-2xl font-black uppercase italic">Памир</h3>
+                </div>
+            </div>
+            <div class="city-card shadow-xl">
+                <img src="https://phototravel.tj/wp-content/uploads/2021/04/iskanderkul.jpg" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent p-6 flex flex-col justify-end">
+                    <h3 class="text-white text-2xl font-black uppercase italic">Искандаркул</h3>
+                </div>
+            </div>
+            <div class="city-card shadow-xl">
+                <img src="https://khujand.tj/images/tour/1.jpg" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent p-6 flex flex-col justify-end">
+                    <h3 class="text-white text-2xl font-black uppercase italic">Худжанд</h3>
+                </div>
+            </div>
+        </div>
 
-            <div class="bg-[#0f172a] p-8 rounded-[2.5rem] text-white shadow-2xl relative overflow-hidden">
-                <div class="relative z-10">
-                    <div class="flex justify-between items-start mb-10">
-                        <div>
-                            <p class="text-[10px] font-black text-blue-400 uppercase tracking-widest">Premium Access</p>
-                            <h4 class="text-xl font-black italic">Offline Maps & GPS</h4>
-                        </div>
-                        <span class="bg-blue-600 px-4 py-2 rounded-full font-black text-xs">$9.99</span>
-                    </div>
-                    <p class="text-2xl font-bold tracking-[0.2em] mb-2">4444 8888 1461 0428</p>
-                    <p class="text-[9px] opacity-40 uppercase font-black">Valid thru 12/28</p>
-                </div>
-                <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-blue-600/20 rounded-full blur-3xl"></div>
+        <div class="px-6 grid grid-cols-2 gap-4 mb-8">
+            <div class="bg-blue-600 p-6 rounded-[2rem] text-white">
+                <p class="text-[10px] font-bold uppercase opacity-60">Weather</p>
+                <p class="text-3xl font-black">+14°C</p>
             </div>
+            <div class="bg-gray-50 border border-gray-100 p-6 rounded-[2rem] text-blue-600">
+                <p class="text-[10px] font-bold uppercase text-gray-400">USD Rate</p>
+                <p class="text-3xl font-black">10.92</p>
+            </div>
+        </div>
+
+        <div class="px-6 pb-32">
+            <button onclick="nav('guides-page')" class="w-full p-6 border-2 border-blue-600 rounded-[2rem] text-blue-600 font-black flex justify-between items-center italic">
+                НАЙТИ ГИДА И РЕСТОРАНЫ <i class="fas fa-chevron-right"></i>
+            </button>
         </div>
     </div>
 
     <div id="guides-page" class="page p-6 pb-32">
-        <h2 class="text-4xl font-black italic tracking-tighter mb-8">Contacts.</h2>
-        
-        <div class="space-y-6">
-            <div class="bg-white p-6 rounded-[2rem] shadow-sm border border-gray-100 flex items-center justify-between">
+        <h2 class="text-4xl font-black italic mb-8">Contacts.</h2>
+        <div class="space-y-4">
+            <div class="p-6 bg-white border rounded-[2rem] flex justify-between items-center shadow-sm">
                 <div>
-                    <h4 class="font-black italic text-lg text-blue-600">Pamir Silk Travel</h4>
-                    <p class="text-xs font-bold text-gray-400">+992 93 505 2361</p>
+                    <p class="font-black italic">Pamir Silk Travel</p>
+                    <p class="text-sm text-gray-400">+992 93 505 2361</p>
                 </div>
-                <a href="tel:+992935052361" class="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center shadow-lg"><i class="fas fa-phone"></i></a>
+                <a href="tel:+992935052361" class="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center"><i class="fas fa-phone"></i></a>
             </div>
-
-            <div class="bg-orange-50 p-8 rounded-[2.5rem]">
-                <h4 class="text-orange-600 font-black italic text-xs uppercase tracking-widest mb-6">Лучшие Рестораны</h4>
-                <ul class="space-y-4 font-bold text-gray-700">
-                    <li class="flex items-center gap-3"><i class="fas fa-utensils text-orange-300"></i> Rohat Chaikhana</li>
-                    <li class="flex items-center gap-3"><i class="fas fa-utensils text-orange-300"></i> Bukhara Dushanbe</li>
-                    <li class="flex items-center gap-3"><i class="fas fa-utensils text-orange-300"></i> Toqi Restaurant</li>
-                </ul>
+            <div class="p-8 bg-orange-50 rounded-[2rem] text-center">
+                <h4 class="font-black text-orange-600 uppercase text-xs mb-4">Рестораны в Душанбе</h4>
+                <p class="font-bold text-gray-700">Rohat Chaikhana<br>Bukhara<br>Toqi</p>
             </div>
         </div>
     </div>
 
-    <div id="chat-page" class="page p-6 pb-32">
-        <h2 class="text-4xl font-black italic tracking-tighter mb-8">Travel AI.</h2>
-        <div id="chat-box" class="space-y-4 mb-6">
-            <div class="bg-blue-600 text-white p-6 rounded-[2rem] rounded-bl-none font-bold shadow-lg">
-                Салом! Я твой ИИ-помощник. Рассказать тебе про Искандаркул или Памир?
-            </div>
-        </div>
-        <div class="grid grid-cols-1 gap-3">
-            <button onclick="askAI('Расскажи про Саrazm')" class="p-5 bg-white border-2 border-gray-100 rounded-3xl text-left font-black italic uppercase text-[10px]">Древний Саразм <i class="fas fa-chevron-right float-right text-blue-600"></i></button>
-            <button onclick="askAI('Красивые места Помира')" class="p-5 bg-white border-2 border-gray-100 rounded-3xl text-left font-black italic uppercase text-[10px]">Места на Помире <i class="fas fa-chevron-right float-right text-blue-600"></i></button>
-        </div>
-    </div>
+    <nav id="navbar" class="fixed bottom-0 inset-x-0 h-20 bg-white/90 backdrop-blur-md border-t flex justify-around items-center hidden">
+        <button onclick="nav('home-page')" class="text-blue-600 flex flex-col items-center">
+            <i class="fas fa-home text-xl"></i><span class="text-[8px] font-black uppercase">Home</span>
+        </button>
+        <button onclick="nav('guides-page')" class="text-gray-300 flex flex-col items-center">
+            <i class="fas fa-compass text-xl"></i><span class="text-[8px] font-black uppercase">Guides</span>
+        </button>
+        <button onclick="location.reload()" class="text-gray-300 flex flex-col items-center">
+            <i class="fas fa-power-off text-xl"></i><span class="text-[8px] font-black uppercase">Exit</span>
+        </button>
+    </nav>
 
-    <nav id="navbar" class="fixed bottom-0 inset-x-0 h-24 glass-nav hidden justify-around items-center z-[1000] px-4">
-        <button onclick="nav('home-page')" class="nav-item flex flex-col
+    <script>
+        function nav(id) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('page-active'));
+            document.getElementById(id).classList.add('page-active');
+            
+            if(id !== 'auth-page') {
+                document.getElementById('navbar').classList.remove('hidden');
+                document.getElementById('navbar').classList.add('flex');
+            } else {
+                document.getElementById('navbar').classList.add('hidden');
+            }
+            window.scrollTo(0,0);
+        }
+    </script>
+</body>
+</html>
