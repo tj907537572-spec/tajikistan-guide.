@@ -8,125 +8,157 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap');
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background: #fcfcfc; color: #1a1a1a; margin: 0; }
-        .screen { display: none; min-height: 100vh; width: 100%; padding-bottom: 120px; }
-        .screen.active { display: block; animation: fadeIn 0.4s ease; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background: #f8fafc; color: #0f172a; margin: 0; }
+        .screen { display: none; min-height: 100vh; padding-bottom: 120px; }
+        .screen.active { display: block; animation: fadeIn 0.3s ease; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        
-        /* Главное изображение природы */
+
+        /* Главное фото гор */
         .hero { 
-            height: 55vh; 
-            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent), url('https://images.unsplash.com/photo-1527554198292-2b6226b34665?auto=format&fit=crop&w=1200&q=80'); 
+            height: 45vh; 
+            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent), url('https://images.unsplash.com/photo-1527554198292-2b6226b34665?q=80&w=2000'); 
             background-size: cover; background-position: center;
-            border-radius: 0 0 4rem 4rem; padding: 2.5rem; display: flex; flex-direction: column; justify-content: flex-end;
+            border-radius: 0 0 3.5rem 3.5rem; display: flex; flex-direction: column; justify-content: flex-end; padding: 2rem;
         }
-        
-        .place-card { min-width: 280px; height: 380px; border-radius: 3rem; overflow: hidden; position: relative; flex-shrink: 0; }
+
+        .place-card { min-width: 260px; height: 350px; border-radius: 2.5rem; overflow: hidden; position: relative; flex-shrink: 0; box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
         .no-scrollbar::-webkit-scrollbar { display: none; }
-        
-        /* Стили карты (твоя карта) */
-        .payment-card { 
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); 
-            border-radius: 2.5rem; color: white; padding: 2rem; position: relative; overflow: hidden;
-        }
+        .wa-btn { background: #25D366; color: white; padding: 8px 15px; border-radius: 1rem; font-size: 10px; font-weight: 800; display: inline-flex; items-center; gap: 5px; text-transform: uppercase; }
     </style>
 </head>
 <body>
 
     <div id="screen-home" class="screen active">
-        <div class="hero shadow-2xl">
+        <div class="hero">
             <h1 class="text-white text-5xl font-black italic uppercase leading-none tracking-tighter">Welcome to<br>Tajikistan</h1>
-            <div class="flex gap-4 mt-6">
-                <div class="bg-white/10 backdrop-blur-md p-3 rounded-2xl flex-1 border border-white/20">
-                    <p class="text-white/60 text-[8px] uppercase font-bold">Weather</p>
-                    <p class="text-white font-black italic text-sm">+22°C Panjakent</p>
+            <div class="flex gap-3 mt-4">
+                <div class="bg-white/10 backdrop-blur-md p-3 rounded-2xl flex-1 text-white border border-white/20 text-center">
+                    <p class="text-[8px] uppercase font-bold opacity-70">1 USD</p>
+                    <p class="font-black italic">10.92 TJS</p>
                 </div>
-                <div class="bg-white/10 backdrop-blur-md p-3 rounded-2xl flex-1 border border-white/20">
-                    <p class="text-white/60 text-[8px] uppercase font-bold">Currency USD/TJS</p>
-                    <p class="text-white font-black italic text-sm">10.92</p>
+                <div class="bg-white/10 backdrop-blur-md p-3 rounded-2xl flex-1 text-white border border-white/20 text-center">
+                    <p class="text-[8px] uppercase font-bold opacity-70">Weather</p>
+                    <p class="font-black italic">+22°C</p>
                 </div>
             </div>
         </div>
 
-        <div class="p-8">
-            <h2 class="text-2xl font-black italic uppercase tracking-tighter mb-6">Explore Nature</h2>
-            <div class="flex overflow-x-auto no-scrollbar gap-6">
-                <div class="place-card"><img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=600" class="w-full h-full object-cover"><div class="absolute inset-0 bg-gradient-to-t from-black/70 p-8 flex flex-col justify-end text-white"><h3 class="text-2xl font-black uppercase italic">Помир</h3></div></div>
-                <div class="place-card"><img src="https://images.unsplash.com/photo-1582650625119-3a31f8fa2699?w=600" class="w-full h-full object-cover"><div class="absolute inset-0 bg-gradient-to-t from-black/70 p-8 flex flex-col justify-end text-white"><h3 class="text-2xl font-black uppercase italic">Саразм</h3></div></div>
-                <div class="place-card"><img src="https://images.unsplash.com/photo-1544085311-11a028465b03?w=600" class="w-full h-full object-cover"><div class="absolute inset-0 bg-gradient-to-t from-black/70 p-8 flex flex-col justify-end text-white"><h3 class="text-2xl font-black uppercase italic">Искандаркул</h3></div></div>
-                <div class="place-card"><img src="https://images.unsplash.com/photo-1528154291023-a6525fabe5b4?w=600" class="w-full h-full object-cover"><div class="absolute inset-0 bg-gradient-to-t from-black/70 p-8 flex flex-col justify-end text-white"><h3 class="text-2xl font-black uppercase italic">Худжанд</h3></div></div>
-                <div class="place-card"><img src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=600" class="w-full h-full object-cover"><div class="absolute inset-0 bg-gradient-to-t from-black/70 p-8 flex flex-col justify-end text-white"><h3 class="text-2xl font-black uppercase italic">Душанбе</h3></div></div>
+        <div class="grid grid-cols-3 gap-4 px-8 mt-8">
+            <div onclick="nav('screen-booking')" class="flex flex-col items-center">
+                <div class="w-16 h-16 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center text-xl shadow-sm"><i class="fas fa-hotel"></i></div>
+                <span class="text-[9px] font-black uppercase mt-2">Booking</span>
+            </div>
+            <div onclick="nav('screen-taxi')" class="flex flex-col items-center">
+                <div class="w-16 h-16 bg-orange-50 text-orange-500 rounded-2xl flex items-center justify-center text-xl shadow-sm"><i class="fas fa-taxi"></i></div>
+                <span class="text-[9px] font-black uppercase mt-2">Taxi</span>
+            </div>
+            <div onclick="nav('screen-food')" class="flex flex-col items-center">
+                <div class="w-16 h-16 bg-red-50 text-red-500 rounded-2xl flex items-center justify-center text-xl shadow-sm"><i class="fas fa-utensils"></i></div>
+                <span class="text-[9px] font-black uppercase mt-2">Food</span>
             </div>
         </div>
 
-        <div class="px-8 pb-10">
-            <div class="payment-card shadow-2xl active:scale-95 transition-all">
-                <div class="flex justify-between items-start mb-8">
-                    <div>
-                        <p class="text-[10px] font-black text-blue-400 uppercase tracking-widest leading-none">Premium Lifetime</p>
-                        <h4 class="text-xl font-black italic uppercase">Offline Maps</h4>
-                    </div>
-                    <p class="text-2xl font-black italic text-yellow-400">$9.99</p>
-                </div>
-                <p class="text-xl font-bold tracking-[0.25em] mb-4 text-white/90">4444 8888 1461 0428</p>
-                <div class="flex justify-between items-center mt-6">
-                    <p class="text-[8px] font-bold text-gray-400 uppercase">Contact Support: tj907537572@mail.com</p>
-                    <a href="https://t.me/Yusuf200fg" class="bg-blue-600 px-4 py-2 rounded-xl text-[10px] font-black uppercase tracking-tighter">Buy via Telegram</a>
-                </div>
+        <div class="mt-10 px-8">
+            <h2 class="text-2xl font-black italic uppercase tracking-tighter mb-4 italic">Destinations.</h2>
+
+<div class="flex overflow-x-auto no-scrollbar gap-5">
+                <div class="place-card"><img src="https://images.unsplash.com/photo-1544085311-11a028465b03?w=600" class="w-full h-full object-cover"><div class="absolute inset-0 bg-gradient-to-t from-black/80 p-6 flex flex-col justify-end text-white"><h3 class="text-xl font-black italic uppercase">Помир</h3></div></div>
+                <div class="place-card"><img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600" class="w-full h-full object-cover"><div class="absolute inset-0 bg-gradient-to-t from-black/80 p-6 flex flex-col justify-end text-white"><h3 class="text-xl font-black italic uppercase">Саразм</h3></div></div>
+                <div class="place-card"><img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=600" class="w-full h-full object-cover"><div class="absolute inset-0 bg-gradient-to-t from-black/80 p-6 flex flex-col justify-end text-white"><h3 class="text-xl font-black italic uppercase">Искандаркул</h3></div></div>
+                <div class="place-card"><img src="https://images.unsplash.com/photo-1528154291023-a6525fabe5b4?w=600" class="w-full h-full object-cover"><div class="absolute inset-0 bg-gradient-to-t from-black/80 p-6 flex flex-col justify-end text-white"><h3 class="text-xl font-black italic uppercase">Худжанд</h3></div></div>
+                <div class="place-card"><img src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=600" class="w-full h-full object-cover"><div class="absolute inset-0 bg-gradient-to-t from-black/80 p-6 flex flex-col justify-end text-white"><h3 class="text-xl font-black italic uppercase">Душанбе</h3></div></div>
             </div>
         </div>
     </div>
 
-    <div id="screen-services" class="screen p-8">
-        <h2 class="text-4xl font-black italic uppercase mb-8 mt-4 tracking-tighter italic text-blue-600">Travel Directory.</h2>
+    <div id="screen-booking" class="screen p-8">
+        <h2 class="text-3xl font-black italic uppercase mb-6">Hotels.</h2>
+        <div class="bg-white p-6 rounded-3xl shadow-sm border border-gray-100">
+            <p class="font-black italic text-lg mb-2">Booking.com Tajikistan</p>
+            <p class="text-xs text-gray-500 mb-6">Забронируйте лучшие отели Душанбе, Худжанда и других городов.</p>
+            <a href="https://www.booking.com" class="text-blue-600 font-black text-[10px] uppercase underline">Open Website</a>
+        </div>
+    </div>
+
+    <div id="screen-taxi" class="screen p-8">
+        <h2 class="text-3xl font-black italic uppercase mb-6">Taxi Services.</h2>
+        <div class="bg-gray-950 text-white p-8 rounded-[3rem] mb-4">
+            <p class="text-2xl font-black italic">YAK TAXI</p>
+            <p class="text-[10px] text-gray-400 font-bold mb-6">DUSHANBE • 1111</p>
+            <a href="tel:1111" class="bg-white text-black px-8 py-3 rounded-2xl font-black text-[10px] uppercase">Call 1111</a>
+        </div>
+    </div>
+
+    <div id="screen-food" class="screen p-8">
+        <h2 class="text-3xl font-black italic uppercase mb-6">Best Food.</h2>
+        <div class="bg-white p-6 rounded-3xl border border-gray-100 mb-4">
+            <p class="font-black italic uppercase">Toqi Restaurant</p>
+            <p class="text-[10px] text-gray-400 mt-1">Лучший Ош и национальные блюда.</p>
+        </div>
+        <div class="bg-white p-6 rounded-3xl border border-gray-100 mb-4">
+            <p class="font-black italic uppercase">Chaikhana Rokhat</p>
+            <p class="text-[10px] text-gray-400 mt-1">Историческая архитектура и вкусный чай.</p>
+        </div>
+    </div>
+
+    <div id="screen-premium" class="screen p-8">
+        <h2 class="text-3xl font-black italic uppercase mb-6">Premium.</h2>
+        <div class="bg-blue-600 p-8 rounded-[3rem] text-white shadow-2xl relative overflow-hidden">
+            <p class="text-[10px] font-black uppercase tracking-widest opacity-80">Offline GPS Maps</p>
+            <h3 class="text-4xl font-black italic mt-2 mb-8 uppercase">$9.99</h3>
+
+<p class="text-lg font-bold tracking-[0.2em] mb-4">4444 8888 1461 0428</p>
+            <p class="text-[9px] font-bold opacity-60 uppercase">Send receipt to Yusuf via Telegram</p>
+            <a href="https://t.me/Yusuf200fg" class="mt-8 inline-block bg-white text-blue-600 px-8 py-3 rounded-2xl font-black text-[10px] uppercase italic">Open Telegram</a>
+        </div>
+    </div>
+
+    <div id="screen-contacts" class="screen p-8 overflow-y-auto">
+        <h2 class="text-3xl font-black italic uppercase mb-6">Directories.</h2>
         <div class="space-y-4">
-            <div class="bg-white p-6 rounded-[2.5rem] shadow-sm border border-gray-100 flex justify-between items-center">
-                <div><p class="font-black italic uppercase text-sm">Pamir and Mountain</p><p class="text-[9px] text-gray-400 font-bold uppercase">Пенджикент</p></div>
-                <a href="https://wa.me/992935993737" class="text-green-500 text-2xl"><i class="fab fa-whatsapp"></i></a>
+            <div class="bg-white p-5 rounded-3xl shadow-sm border border-gray-100 flex justify-between items-center">
+                <div><p class="font-black italic text-sm">Pamir and Mountain</p><p class="text-[8px] text-gray-400">Пенджикент • +992 93 599 3737</p></div>
+                <a href="https://wa.me/992935993737" class="wa-btn"><i class="fab fa-whatsapp"></i> WA</a>
             </div>
-            <div class="bg-white p-6 rounded-[2.5rem] shadow-sm border border-gray-100 flex justify-between items-center">
-                <div><p class="font-black italic uppercase text-sm">Javohir (Umeda)</p><p class="text-[9px] text-gray-400 font-bold uppercase">Душанбе</p></div>
-                <a href="https://wa.me/992939201010" class="text-green-500 text-2xl"><i class="fab fa-whatsapp"></i></a>
+            <div class="bg-white p-5 rounded-3xl shadow-sm border border-gray-100 flex justify-between items-center">
+                <div><p class="font-black italic text-sm">Javohir (Umeda)</p><p class="text-[8px] text-gray-400">Душанбе • +992 93 920 1010</p></div>
+                <a href="https://wa.me/992939201010" class="wa-btn"><i class="fab fa-whatsapp"></i> WA</a>
             </div>
-            <div class="bg-white p-6 rounded-[2.5rem] shadow-sm border border-gray-100 flex justify-between items-center">
-                <div><p class="font-black italic uppercase text-sm">Sky Tour</p><p class="text-[9px] text-gray-400 font-bold uppercase">Душанбе</p></div>
-                <a href="https://wa.me/992908580101" class="text-green-500 text-2xl"><i class="fab fa-whatsapp"></i></a>
+            <div class="bg-blue-600 text-white p-6 rounded-[2.5rem] shadow-lg">
+                <p class="text-xl font-black italic italic">Парвиз Солихов</p>
+                <p class="text-[9px] font-bold opacity-70 uppercase tracking-widest mt-1">RU/EN/FR/TJ • Cultural Expert</p>
+                <a href="https://wa.me/992446257575" class="mt-4 inline-block bg-white text-black px-6 py-2 rounded-xl text-[10px] font-black uppercase">WA Contact</a>
             </div>
-            
-            <h3 class="text-xl font-black italic uppercase mt-8 text-gray-400">Our Guides</h3>
-            <div class="bg-blue-600 p-8 rounded-[3rem] text-white shadow-xl shadow-blue-100">
-                <p class="text-2xl font-black italic">Парвиз Солихов</p>
-                <p class="text-[10px] font-bold opacity-70 uppercase tracking-widest mt-1 italic">RU / EN / FR / TJ • Cultural Expert</p>
-                <a href="https://wa.me/992446257575" class="inline-block mt-6 bg-white text-black px-6 py-2 rounded-xl text-[10px] font-black uppercase">WhatsApp Contact</a>
+            <div class="bg-white p-5 rounded-3xl border border-gray-100 flex justify-between items-center">
+                <div><p class="font-black italic text-sm">Sky Tour</p><p class="text-[8px] text-gray-400">+992 90 858 0101</p></div>
+                <a href="https://wa.me/992908580101" class="wa-btn"><i class="fab fa-whatsapp"></i> WA</a>
             </div>
-            <div class="bg-white p-6 rounded-[2.5rem] shadow-sm border border-gray-100 flex justify-between items-center">
-                <div><p class="font-black italic uppercase text-sm">Саиджон Сатторов</p><p class="text-[9px] text-gray-400 font-bold uppercase">Bunyod-Tour</p></div>
-                <a href="https://wa.me/992446257575" class="text-green-500 text-2xl"><i class="fab fa-whatsapp"></i></a>
+            <div class="bg-white p-5 rounded-3xl border border-gray-100 flex justify-between items-center">
+                <div><p class="font-black italic text-sm">Orient Adventour</p><p class="text-[8px] text-gray-400">+992 93 507 0021</p></div>
+                <a href="https://wa.me/992935070021" class="wa-btn"><i class="fab fa-whatsapp"></i> WA</a>
             </div>
         </div>
     </div>
 
     <div id="screen-chat" class="screen flex flex-col h-screen p-8 pt-16">
-        <h2 class="text-3xl font-black italic mb-6 uppercase tracking-tighter">AI Historian.</h2>
+        <h2 class="text-3xl font-black italic mb-6 uppercase tracking-tighter italic">AI Historian.</h2>
         <div id="chat-box" class="flex-1 overflow-y-auto space-y-4 no-scrollbar mb-4">
-            <div class="bg-blue-600 text-white p-6 rounded-[2.5rem] rounded-tl-none text-sm font-bold shadow-xl">Салом! Я знаю всё об истории Саразма (5500 лет) и горах Памира. О чем рассказать?</div>
+            <div class="bg-blue-600 text-white p-6 rounded-[2rem] rounded-tl-none text-sm font-bold shadow-lg italic">
+                Salom! I know history of all Tajik cities (Khujand, Sarazm, Dushanbe, Pamir). Ask me in any language!
+            </div>
         </div>
         <div class="flex gap-2 mb-28">
-            <input id="chat-input" type="text" placeholder="Расскажи о Саразме..." class="flex-1 p-5 bg-white shadow-sm border border-gray-100 rounded-3xl outline-none font-bold text-sm">
+            <input id="chat-input" type="text" placeholder="История Саразма..." class="flex-1 p-5 bg-white border border-gray-100 rounded-3xl outline-none font-bold text-sm shadow-sm">
             <button onclick="sendMessage()" class="w-16 h-16 bg-blue-600 text-white rounded-3xl flex items-center justify-center shadow-lg"><i class="fas fa-paper-plane"></i></button>
         </div>
     </div>
 
-    <nav class="fixed bottom-0 inset-x-0 h-24 bg-white/95 backdrop-blur-2xl border-t border-gray-50 flex justify-around items-center px-10 z-[100]">
-        <button onclick="nav('screen-home')" class="nav-btn text-blue-600 flex flex-col items-center gap-1">
-            <i class="fas fa-mountain text-xl"></i><span class="text-[8px] font-black uppercase">Nature</span>
-        </button>
-        <button onclick="nav('screen-services')" class="nav-btn text-gray-300 flex flex-col items-center gap-1">
-            <i class="fas fa-address-book text-xl"></i><span class="text-[8px] font-black uppercase">Contacts</span>
-        </button>
-        <button onclick="nav('screen-chat')" class="nav-btn text-gray-300 flex flex-col items-center gap-1">
-            <i class="fas fa-robot text-xl"></i><span class="text-[8px] font-black uppercase">AI Chat</span>
-        </button>
+    <nav class="fixed bottom-0 inset-x-0 h-24 bg-white/95 backdrop-blur-2xl border-t border-gray-100 flex justify-around items-center px-6 z-[100]">
+        <button onclick="nav('screen-home')" class="nav-btn text-blue-600 flex flex-col items-center gap-1"><i class="fas fa-home text-xl"></i><span class="text-[8px] font-black uppercase">Home</span></button>
+
+<button onclick="nav('screen-contacts')" class="nav-btn text-gray-300 flex flex-col items-center gap-1"><i class="fas fa-address-book text-xl"></i><span class="text-[8px] font-black uppercase">Guides</span></button>
+        <button onclick="nav('screen-premium')" class="nav-btn text-gray-300 flex flex-col items-center gap-1"><i class="fas fa-map-marked-alt text-xl"></i><span class="text-[8px] font-black uppercase">Maps</span></button>
+        <button onclick="nav('screen-chat')" class="nav-btn text-gray-300 flex flex-col items-center gap-1"><i class="fas fa-robot text-xl"></i><span class="text-[8px] font-black uppercase">AI Chat</span></button>
     </nav>
 
     <script>
@@ -143,15 +175,19 @@
             const input = document.getElementById('chat-input');
             const box = document.getElementById('chat-box');
             if(!input.value) return;
-            box.innerHTML += `<div class="bg-gray-100 p-6 rounded-[2rem] rounded-tr-none max-w-[90%] ml-auto text-sm font-bold text-gray-500 italic">${input.value}</div>`;
+            box.innerHTML += <div class="bg-gray-100 p-5 rounded-[2rem] ml-auto text-sm font-bold italic">${input.value}</div>;
             
-            let reply = "Это потрясающее место! Таджикистан — сердце Шелкового пути.";
+            let reply = "I can tell you about any place! Ask about Khujand, Sarazm, Dushanbe or Pamir.";
             const q = input.value.toLowerCase();
-            if(q.includes("саразм")) reply = "Саразм — древнейшее поселение в Центральной Азии (4-2 тысячелетия до н. э.). Это объект ЮНЕСКО, доказывающий, что наши предки были мастерами земледелия и ремесла еще 5500 лет назад!";
-            if(q.includes("помир")) reply = "Памир — 'Крыша мира'. Это высочайшие горы с уникальной культурой памирцев. Древние греки и Марко Поло описывали эти места как величайшее испытание и красоту.";
+            
+            if(q.includes("саразм") || q.includes("sarazm")) reply = "Саразм — 5500 лет истории! Это колыбель цивилизации в Центральной Азии. Объект ЮНЕСКО в Пенджикенте.";
+            if(q.includes("худжанд") || q.includes("khujand")) reply = "Худжанд — один из старейших городов на Шелковом Пути (2500 лет). Центр северного Таджикистана на Сырдарье.";
+            if(q.includes("душанбе") || q.includes("dushanbe")) reply = "Душанбе — столица Таджикистана. Город садов, самого высокого флагштока и современного гостеприимства.";
+            if(q.includes("помир") || q.includes("pamir")) reply = "Памир — 'Крыша мира'. Высочайшие горы с глубокой культурой и невероятными видами.";
+            if(q.includes("искандаркул") || q.includes("iskandarkul")) reply = "Искандаркул — жемчужина Фанских гор. Озеро Александра Македонского.";
 
             setTimeout(() => {
-                box.innerHTML += `<div class="bg-blue-600 text-white p-6 rounded-[2.5rem] rounded-tl-none max-w-[90%] text-sm font-bold shadow-xl italic">${reply}</div>`;
+                box.innerHTML += <div class="bg-blue-600 text-white p-5 rounded-[2rem] text-sm font-bold shadow-xl italic">${reply}</div>;
                 box.scrollTop = box.scrollHeight;
             }, 800);
             input.value = "";
